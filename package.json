@@ -1,0 +1,27 @@
+{
+  "name": "delivery",
+  "version": "1.0.0",
+  "description": "Api of delivery.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonnathas/delivery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonnathas/delivery/issues"
+  },
+  "homepage": "https://github.com/jonnathas/delivery#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "knex": "^2.4.2",
+    "mysql2": "^3.2.0"
+  }
+}
