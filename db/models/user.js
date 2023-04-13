@@ -1,5 +1,5 @@
-import knex from 'knex';
-import bcrypt from 'bcrypt';
+const knex = require('knex');
+const bcrypt = require('bcrypt');
 
 class User {
 
@@ -15,11 +15,16 @@ class User {
 
         const name = this.name;
         const password = this.password;
+
         bcrypt.hash(password, 10, (error, hash) =>{
 
-            const rows = knex.insert(this.table).insert({name, password});
+            console.log(knex);
+
+            const rows = knex.insert(this.table).insert({name: this.name, password: password});
             
-            if(rows.legth === 0){
+            console.log('rows');
+
+            if(!rows.legth === 0){
                 return null
             }
     
@@ -29,4 +34,4 @@ class User {
     }
 }
 
-export default User;
+module.exports = User ;

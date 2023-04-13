@@ -1,11 +1,14 @@
-import user from './db/models/user.js'
-import dotenv from 'dotenv'
+const userClass = require('./db/models/user')
+const dotenv = require('dotenv')
 dotenv.config()
 
-let userCreated = new user({
+let user = new userClass({
     name:'jonnathas',
     password: '123',
     email: 'jonnathas@quality.com'
 });
 
-console.log(userCreated);
+user.register();
+
+
+//console.log(userCreated);
