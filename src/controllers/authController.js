@@ -1,4 +1,5 @@
 let User = require('../models/user.js')
+const express = require('express')
 
 const authController = {
 
@@ -6,13 +7,13 @@ const authController = {
 
         user = new User(req.body);
 
-        user.register()
-            .then((result) => {
-                res.send('criado com sucesso!')
-            }).catch(()=> {
-                res.send('falha ao criar!')
-            })
-            
+        let id = user.register((result) => {
+
+            res.json(result)
+
+        },(error) => {
+            console.error('Error: ', error)
+        })   
 
     },
 

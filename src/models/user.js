@@ -14,26 +14,25 @@ class User {
         this.table = 'users';
     }
     
-    register(){
+    register(then_callback,catch_callback){
 
         const name = this.name;
         const password = this.password;
 
         const salt = parseInt(process.env.HASH_SALT, 10);
 
-        let result;
-
-        bcrypt.hash(this.password, salt, (error, hash) =>{
+        let result = bcrypt.hash(this.password, salt, (error, hash) =>{
 
             let data = { name: this.name, password: '2', email: this.email}
 
-            result = knex(knexConfig[process.env.NODE_ENV])('users').insert(data)
-            
-            
+            return knex(knexConfig[process.env.NODE_ENV])('users').insert(data)
+                .then(then_callback)
+                .catch(catch_callback)
         });
+    
+        console.log(result)
 
         return result;
-
     }
 }
 
