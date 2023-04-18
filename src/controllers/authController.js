@@ -1,9 +1,18 @@
+let User = require('../models/user.js')
 
 const authController = {
 
     register: (req, res) => {
-        
-        
+
+        user = new User(req.body);
+
+        user.register()
+            .then((result) => {
+                res.send('criado com sucesso!')
+            }).catch(()=> {
+                res.send('falha ao criar!')
+            })
+            
 
     },
 
@@ -25,4 +34,4 @@ const authController = {
 
 }
 
-export default authController;
+module.exports = authController;

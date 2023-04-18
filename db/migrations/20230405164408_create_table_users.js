@@ -6,10 +6,10 @@ exports.up = function(knex) {
 
     return knex.schema.createTable('users',function(table){
 
-        table.bigIncrements('id').primary();
-        table.string('name').notNullable();
-        table.string('e_mail').notNullable();
-        table.string('password').notNullable();
+        table.increments();
+        table.string('name').nullable().default(null);
+        table.string('email').nullable().default(null);
+        table.string('password').nullable().default(null);
     })
   
 };

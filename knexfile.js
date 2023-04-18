@@ -16,7 +16,8 @@ module.exports = {
         migrations: {
             directory: path.join(__dirname, 'db', 'migrations'),
             tableName: 'migrations'
-        }
+        },
+        useNullAsDefault: true
     },
     production: {
         client: 'mysql2',
@@ -29,6 +30,7 @@ module.exports = {
         migrations: {
             directory: path.join(__dirname, 'db', 'migrations'),
             tableName: 'migrations'
-        }
+        },
+        useNullAsDefault: true
     }
 };

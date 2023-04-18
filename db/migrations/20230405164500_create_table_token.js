@@ -6,7 +6,7 @@ exports.up = function(knex) {
 
     return knex.schema.createTable('tokens',function(table){
 
-        table.bigIncrements('id').primary();
+        table.increments();
         table.bigInteger('user_id');
         table.text('token');
     })
