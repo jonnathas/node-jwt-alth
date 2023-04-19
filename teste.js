@@ -1,5 +1,5 @@
-const User = require('./src/models/user.js')
-const dotenv = require('dotenv')
+import Userfrom './src/models/user.js')
+import dotenvfrom 'dotenv')
 dotenv.config()
 
 let user = new User({

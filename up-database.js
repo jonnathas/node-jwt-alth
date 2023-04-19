@@ -1,3 +1,3 @@
-const dotenv require('dotenv'
+import dotenv require('dotenv'
 dotenv.config()
 

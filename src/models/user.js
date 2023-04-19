@@ -1,6 +1,6 @@
-const knex = require('knex');
-const bcrypt = require('bcrypt');
-const knexConfig = require('../../knexfile.js');
+import knex from 'knex'
+import bcrypt from 'bcrypt';
+import knexConfig from '../../knexfile.alternative.js';
 
 class User {
 
@@ -14,26 +14,29 @@ class User {
         this.table = 'users';
     }
     
-    register(then_callback,catch_callback){
+    register(){
 
         const name = this.name;
         const password = this.password;
 
         const salt = parseInt(process.env.HASH_SALT, 10);
+        let hash;
 
-        let result = bcrypt.hash(this.password, salt, (error, hash) =>{
-
-            let data = { name: this.name, password: '2', email: this.email}
-
-            return knex(knexConfig[process.env.NODE_ENV])('users').insert(data)
-                .then(then_callback)
-                .catch(catch_callback)
+        let result = bcrypt.hash(this.password, salt, (error, hash_created) =>{
+            hash = hash_created;
         });
+
+        console.log(hash)
+
+        this.password = hash;
+        let data = { name: this.name, password: hash, email: this.email}
+
+        knex(knexConfig[process.env.NODE_ENV])('users').insert(data)
     
-        console.log(result)
+        
 
         return result;
     }
 }
 
-module.exports = User ;
+export default User;

@@ -1,5 +1,5 @@
-let User = require('../models/user.js')
-const express = require('express')
+import User from '../models/user.js'
+import express from 'express'
 
 const authController = {
 
@@ -7,13 +7,9 @@ const authController = {
 
         user = new User(req.body);
 
-        let id = user.register((result) => {
-
-            res.json(result)
-
-        },(error) => {
-            console.error('Error: ', error)
-        })   
+        let id =  user.register()
+        
+        res.send('test')
 
     },
 
@@ -35,4 +31,4 @@ const authController = {
 
 }
 
-module.exports = authController;
+export default authController;

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Api of delivery.",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +24,7 @@
     "express": "^4.18.2",
     "knex": "^2.4.2",
     "mysql2": "^3.2.0",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "webpack": "^5.80.0"
   }
 }

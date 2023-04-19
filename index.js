@@ -1,8 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
+import express from 'express';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import knex from 'knex';
 
-const authRouter = require('./src/routes/authRouter.js');
+// definindo as exportações como CommonJS
+module.exports = typeof module === 'undefined' || !module.parent ? { express, knex } : { };
+
+import authRouter from './src/routes/authRouter.js';
 
 dotenv.config()
 
