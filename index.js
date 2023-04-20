@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+dotenv.config()
 import knex from 'knex';
 
 // definindo as exportações como CommonJS
@@ -8,7 +9,6 @@ module.exports = typeof module === 'undefined' || !module.parent ? { express, kn
 
 import authRouter from './src/routes/authRouter.js';
 
-dotenv.config()
 
 const app = express();
 
