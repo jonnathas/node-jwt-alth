@@ -1,5 +1,5 @@
-import Userfrom './src/models/user.js')
-import dotenvfrom 'dotenv')
+import User from './src/models/user.js'
+import dotenv from 'dotenv'
 dotenv.config()
 
 let user = new User({
