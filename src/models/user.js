@@ -1,41 +1,22 @@
-import knex from 'knex'
 import bcrypt from 'bcrypt';
-import knexConfig from '../../knexfile.alternative.js';
+import sequelize from '../../config/dbConfig.js';
+import { Model } from 'sequelize';
 
-class User {
 
+sequelize();
+
+
+class User extends Model{
     
-    
-    constructor({id,password,email,name}){
-        this.id = id;
-        this.email = email;
-        this.name = name;
-        this.password = password;
-        this.table = 'users';
-    }
-    
-    register(){
+    create(data){
 
-        const name = this.name;
-        const password = this.password;
+        hashadPassword = bcrypt.hash(data.password, process.env.HASH_SALT)
 
-        const salt = parseInt(process.env.HASH_SALT, 10);
-        let hash;
+        data.password = hashadPassword;
 
-        let result = bcrypt.hash(this.password, salt, (error, hash_created) =>{
-            hash = hash_created;
-        });
+        newUser = User.Create(data);
 
-        console.log(hash)
-
-        this.password = hash;
-        let data = { name: this.name, password: hash, email: this.email}
-
-        knex(knexConfig[process.env.NODE_ENV])('users').insert(data)
-    
-        
-
-        return result;
+        return newUser;
     }
 }
 
