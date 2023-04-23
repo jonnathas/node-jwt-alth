@@ -2,10 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 dotenv.config()
-import knex from 'knex';
-
-// definindo as exportações como CommonJS
-module.exports = typeof module === 'undefined' || !module.parent ? { express, knex } : { };
 
 import authRouter from './src/routes/authRouter.js';
 
@@ -23,5 +19,5 @@ app.listen(port,() => {
     console.log('servidor iniciado');
 });
 
-module.exports = authRouter;
+export default authRouter;
 

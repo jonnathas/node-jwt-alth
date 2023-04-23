@@ -5,9 +5,10 @@ const authController = {
 
     register: (req, res) => {
 
-        user = new User(req.body);
-
-        let id =  user.register()
+        console.log(req.body);
+        
+        user = new User();
+        user.create(req.body);
         
         res.send('test')
 
