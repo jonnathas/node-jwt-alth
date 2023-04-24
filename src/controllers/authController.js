@@ -1,16 +1,24 @@
-let User = require('../models/user.js')
+let User = require('../models/User.js')
 
 const authController = {
 
     register: (req, res) => {
 
-        user = new User(req.body);
+        user = new User();
 
-        user.register()
-            .then((result) => {
-                res.send('criado com sucesso!')
-            }).catch(()=> {
-                res.send('falha ao criar!')
+        user.create(req.body)
+            .then((userCreatedId)=>{
+
+                res.status(200)
+                    .json({
+                        id: userCreatedId[0]
+                    });
+            }).catch((error) => {
+
+                res.status(500)
+                    .json({
+                        message: "User not created."
+                    });
             })
             
 
