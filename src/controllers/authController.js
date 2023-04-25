@@ -1,5 +1,6 @@
 const User = require('../models/User.js')
 const bcrypt = require('bcrypt')
+const bodyParser = require('body-parser');
 
 const dotenv = require('dotenv')
 dotenv.config()
@@ -9,6 +10,8 @@ const authController = {
     register: (req, res) => {
 
         user = new User();
+
+        console.log(req.body)
 
         user.create(req.body)
             .then((userCreatedId)=>{

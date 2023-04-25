@@ -3,17 +3,21 @@ const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const dotenv = require('dotenv')
+dotenv.config()
+
 class User {
     
     async create(data){
 
-        data = await this.makeHash(data);
+        data.password = await this.makeHash(data);
 
-        console.log(data)
+        //console.log(data)
 
         let user_id = await knex('users').insert(data)           
         
         if(!user_id){
+
             throw new Error("User not created.")
         }
         
@@ -40,7 +44,20 @@ class User {
 
     async login(data){
 
-        data = await this.makeHash(data);
+        return new Promise(async function(resolve,reject){
+
+            const user = await knex('users').first().where(data)
+                
+            console.log(user)
+
+            if(user){
+                resulve(user)
+            } else {
+                reject("Error when to try find the user.")
+            }
+        })
+
+        data.password = await this.makeHash(data);
         
         return this.first(data);
 
@@ -50,15 +67,18 @@ class User {
 
         const salt = parseInt(process.env.HASH_SALT, 10);
 
-        return await bcrypt.hash(data.password, salt, (error,hash)=> {
+        console.log(data.password, salt)
 
-            console.error(error)
+        let  hash
 
-            if(error){
-                throw new Error("Error when try make hash.")
-            }
-            return hash;
-        })
+        await bcrypt.hash(data.password, salt)
+            .then((hash_returned)=>{
+                hash = hash_returned;
+            }).catch((error)=>{
+                throw new Error("Error when to try make hash.")
+            })
+
+        return hash
     }
 }
 
