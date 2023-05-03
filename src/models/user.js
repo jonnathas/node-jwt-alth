@@ -44,14 +44,16 @@ class User {
 
     async login(data){
 
+        data.password = await this.makeHash(data)
+
         return new Promise(async function(resolve,reject){
 
-            const user = await knex('users').first().where(data)
+            const user = await knex('users').select('*').where(data)
                 
             console.log(user)
 
             if(user){
-                resulve(user)
+                resolve(user)
             } else {
                 reject("Error when to try find the user.")
             }
@@ -67,9 +69,12 @@ class User {
 
         const salt = parseInt(process.env.HASH_SALT, 10);
 
-        console.log(data.password, salt)
+        console.log(data.password, salt);
 
-        let  hash
+        let hash;
+
+
+        console.log(data.password);    
 
         await bcrypt.hash(data.password, salt)
             .then((hash_returned)=>{
@@ -77,6 +82,8 @@ class User {
             }).catch((error)=>{
                 throw new Error("Error when to try make hash.")
             })
+
+        console.log(hash)
 
         return hash
     }
