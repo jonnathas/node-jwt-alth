@@ -80,36 +80,32 @@ const authController = {
 
     logout: (req, res)=> {
 
-        const token_register = modelToken.logout(req.body.token)
+        const modelToken = new Token();
+
+        console.log(req.token)
+
+        const token_register = modelToken.destroyByToken(req.token)
             .then((rows) =>{
+
+                if(rows === 1){
+   
+                    res.status(204)
+                    .send();
                 
-                res.status(202)
-                    .send();
+                }else{
 
-            }).catch((error) => {
-                console.error(error)
-                res.status(500).send()
-            });
-
-        
-    },
-
-    delete: (req, res)=> {
-        
-        let modelToken = new Token();
-        modelToken = modelToken.getWhere({token: req.body.token})
-        
-        let user = new User()
-        user.destroy({ id: modelToken.id })
-            .then((rows) =>{
+                    console.log('Nenhum registro deletado.')
                     
-                res.status(202)
+                    res.status(202)
                     .send();
+                }
 
             }).catch((error) => {
                 console.error(error)
                 res.status(500).send()
             });
+
+        
     },
 
     me: (req, res)=> {
@@ -121,7 +117,7 @@ const authController = {
 
                 user[0].password = 'hidden'
 
-                res.json(user)
+                res.json(user[0])
                     .send();
 
             }).catch((error) => {
@@ -131,7 +127,29 @@ const authController = {
     },
 
     update: (req, res)=> {
+        
+        let modelToken = new Token();
 
+        modelToken.getUserByToken(req.token)
+            .then((user) =>{
+
+                const modelUser = new User();
+
+                modelUser.update(user[0].id, req.body)
+                    .then((rows)=>{
+                        
+                        res.status(204)
+                        .send();              
+
+                    }).catch((error)=>{
+                        console.error(error)
+                        res.status(500).send()
+                    });
+
+            }).catch((error) => {
+                console.error(error)
+                res.status(500).send()
+            });
     }
 
 }

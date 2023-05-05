@@ -1,9 +1,10 @@
 const knexConfig = require('../../knexfile.js');
 const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 const Model = require('./model.js')
-const Token = require('./token.js')
 
 const dotenv = require('dotenv')
 dotenv.config()
@@ -65,6 +66,17 @@ class User extends Model{
         const hash = btoa(data.password) // atob     
 
         return hash
+    }
+
+    async update(id, data = {}){
+
+        if(data.password){
+
+            data.password = this.makeHash(data)
+        }
+
+
+        return await super.update(id,data);
     }
 }
 

@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = process.env.SERVER_PORT ? process.env.SERVER_PORT : 80;
 
-app.use('/', authRouter)
+app.use('/auth', authRouter)
 
 app.listen(port,() => {
     console.log('servidor iniciado');

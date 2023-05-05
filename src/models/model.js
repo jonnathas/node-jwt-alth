@@ -6,6 +6,8 @@ dotenv.config()
 
 class Model {
 
+    
+
     async create(data){
 
         //console.log(data)
@@ -38,6 +40,13 @@ class Model {
         return await knex(this.table)
             .where(data)
             .whereNull('deleted_at');
+    }
+
+    async update(id, data = {}){
+
+        return await knex(this.table)
+            .where({id: id})
+            .update(data)
     }
 }
 

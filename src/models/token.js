@@ -1,5 +1,6 @@
 const knexConfig = require('../../knexfile.js');
 const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -10,6 +11,12 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 class Token extends Model{
+
+    constructor(){
+        super()
+
+        this.table = 'tokens';
+    }
 
     async destroyByToken(token){
 
