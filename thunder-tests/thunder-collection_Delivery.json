@@ -1,0 +1,131 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Delivery",
+    "dateExported": "2023-05-05T16:31:41.601Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "99198832-5b00-47a9-ba88-bd7f1eb660b3",
+            "colId": "045e7607-2a00-4ecc-9ff1-205041e2287c",
+            "containerId": "",
+            "name": "/auth/me",
+            "url": "{{base_url}}/auth/me",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-05T13:14:30.427Z",
+            "modified": "2023-05-05T16:27:28.709Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InFAcS5jb20iLCJpYXQiOjE2ODMyMTQ4MTYsImV4cCI6MTY4MzIzNjQxNn0.NKP5VXGsaAMKe2_vqhRhr_E5yZJwWgf2wFZIYs6vszg"
+            },
+            "tests": []
+        },
+        {
+            "_id": "329defb8-2640-464a-bf09-db64c9fc9ca5",
+            "colId": "045e7607-2a00-4ecc-9ff1-205041e2287c",
+            "containerId": "",
+            "name": "/auth/login",
+            "url": "{{base_url}}/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-05-05T13:14:51.164Z",
+            "modified": "2023-05-05T13:37:15.574Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\": \"1234\",\n  \"email\": \"q@q.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e37bdb8e-f9a2-431c-80c9-f453dfbb6351",
+            "colId": "045e7607-2a00-4ecc-9ff1-205041e2287c",
+            "containerId": "",
+            "name": "/auth/register",
+            "url": "{{base_url}}/auth/register",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-05-05T13:14:59.652Z",
+            "modified": "2023-05-05T13:37:10.251Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"jonnathas\",\n  \"password\": \"1234\",\n  \"email\": \"q@q.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "11aa833c-1bc1-46b9-aea0-2c048c04ce85",
+            "colId": "045e7607-2a00-4ecc-9ff1-205041e2287c",
+            "containerId": "",
+            "name": "/auth/logout",
+            "url": "{{base_url}}/auth/logout",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-05-05T15:47:46.286Z",
+            "modified": "2023-05-05T15:47:46.286Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InFAcS5jb20iLCJpYXQiOjE2ODMzMDE2MTMsImV4cCI6MTY4MzMyMzIxM30.mWlDYJmH1VoyDoygoxzVHTdNTYgMVVwqiow48tKxGrs"
+            },
+            "tests": []
+        },
+        {
+            "_id": "3eb52cc0-6b98-449f-aa4d-c8d4e90ef4ce",
+            "colId": "045e7607-2a00-4ecc-9ff1-205041e2287c",
+            "containerId": "",
+            "name": "/auth/update",
+            "url": "{{base_url}}/auth/update",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-05-05T16:02:23.590Z",
+            "modified": "2023-05-05T16:02:23.590Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\":\"teste\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InFAcS5jb20iLCJpYXQiOjE2ODMzMDE5MDUsImV4cCI6MTY4MzMyMzUwNX0.nwm8qXSltRb5kRiLoH2C6goGgQVIHI9hmS5ZJMUIMJY"
+            },
+            "tests": []
+        }
+    ]
+}
