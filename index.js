@@ -22,5 +22,5 @@ app.listen(port,() => {
     console.log('servidor iniciado');
 });
 
-module.exports = authRouter;
+module.exports = app;
 
